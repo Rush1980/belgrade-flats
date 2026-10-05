@@ -11,11 +11,13 @@ Created 2026-10-05 (moved out of `testagent`). Standard-library Python only — 
 ```
 scripts/
   belgrade_flats.py   # fetch 4zida.rs + halooglasi.com, filter, mark NEW, print table
-                      #   -> out/belgrade_flats.html (cards with photos)
+                      #   -> out/belgrade_flats.html (cards with photos); exit 2 if no source answered
+  publish.py          # build the default search and force-push it as branch `site` (GitHub Pages)
 out/                  # generated, gitignored
   belgrade_flats.html
   belgrade_flats_seen.json   # listing keys seen on earlier runs; drives the NEW marks
   belgrade_flats_details.json  # per-listing facts from the ad page (lift), so each ad is fetched once
+  publish.log         # one line per publish.py run
 ```
 
 ## Sources
@@ -55,10 +57,16 @@ out/                  # generated, gitignored
   Remaining false-positive risk: identical flats in one new building on different sites.
 - **halooglasi (behind Cloudflare) answers 403 to cloud IPs**: GitHub Actions (Azure) and gitlab.com
   shared runners (Google Cloud, US) both got 403 on 2026-10-05, while 4zida answered 200 from both.
-  It works from a home connection. So the published page (GitHub Pages,
-  https://rush1980.github.io/belgrade-flats/, repo Rush1980/belgrade-flats) is 4zida-only when
-  built in Actions; a full page has to be built on a home machine and pushed. Do not try to get
-  around the block (spoofing, third-party proxies).
+  It works from a home connection. Do not try to get around the block (spoofing, third-party proxies).
+
+## Published page
+
+https://rush1980.github.io/belgrade-flats/ — repo `Rush1980/belgrade-flats` (public; commits use the
+noreply address set in the local git config). Pages serves branch `site` as is (index.html +
+.nojekyll); `scripts/publish.py` rebuilds it and replaces the branch with a fresh one-commit history.
+Windows Task Scheduler task **"Belgrade flats publish"** runs it hourly via pythonw while the PC is on.
+The search it publishes is the `SEARCH` list in publish.py — change it there when the user's default
+filters change. No GitHub Actions: they were removed because runners only get 4zida.
 - Neither site has a public API contract; a layout change breaks that source and is reported
   as an error line while the other source still works.
 

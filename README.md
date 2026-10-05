@@ -22,5 +22,6 @@ on the photo, lift and duplex icons, NEW for listings not seen on a previous run
 
 ## Published page
 
-`.github/workflows/pages.yml` rebuilds today's page every hour (Belgrade time) with the default
-search above and publishes it to GitHub Pages.
+https://rush1980.github.io/belgrade-flats/ is built at home, because halooglasi answers 403 to cloud
+servers: `scripts/publish.py` (run hourly by Windows Task Scheduler) builds today's page and
+force-pushes it as the `site` branch, which GitHub Pages serves. Log: `out/publish.log`.
