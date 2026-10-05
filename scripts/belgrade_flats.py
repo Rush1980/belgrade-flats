@@ -551,7 +551,7 @@ def run_once(a, seen, first_run):
         print(json.dumps([asdict(f) for f in flats], ensure_ascii=False, indent=1))
     else:
         write_html(flats, a, errors)
-    return flats
+    return flats, errors
 
 
 def main():
@@ -587,15 +587,17 @@ def main():
         sys.stdout.reconfigure(encoding='utf-8')
 
     seen = load_seen()
-    flats = run_once(a, seen, first_run=not seen)
+    flats, errors = run_once(a, seen, first_run=not seen)
     if not a.json:
         print(f'{len(flats)} объявл. (новых с прошлого запуска: {sum(f.new for f in flats)}) -> {HTML_FILE}\n')
         print_table(flats, a.limit)
     while a.watch:
         time.sleep(a.watch * 60)
-        new = [f for f in run_once(a, seen, first_run=False) if f.new]
+        new = [f for f in run_once(a, seen, first_run=False)[0] if f.new]
         print(f'\n--- {datetime.now():%H:%M} · новых: {len(new)}')
         print_table(new, len(new))
+    if len(errors) == len(a.source or ('4zida', 'halooglasi')):
+        sys.exit(2)                     # no source answered: callers (publish.py) keep the old page
 
 
 if __name__ == '__main__':

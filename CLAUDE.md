@@ -53,6 +53,12 @@ out/                  # generated, gitignored
   two known upper floors may not differ (sites disagree on basement vs. ground floor for one flat).
   2026-10-05, all Belgrade: 79 of ~810 listings folded, ~2/3 of them 4zida+halooglasi pairs.
   Remaining false-positive risk: identical flats in one new building on different sites.
+- **halooglasi (behind Cloudflare) answers 403 to cloud IPs**: GitHub Actions (Azure) and gitlab.com
+  shared runners (Google Cloud, US) both got 403 on 2026-10-05, while 4zida answered 200 from both.
+  It works from a home connection. So the published page (GitHub Pages,
+  https://rush1980.github.io/belgrade-flats/, repo Rush1980/belgrade-flats) is 4zida-only when
+  built in Actions; a full page has to be built on a home machine and pushed. Do not try to get
+  around the block (spoofing, third-party proxies).
 - Neither site has a public API contract; a layout change breaks that source and is reported
   as an error line while the other source still works.
 
