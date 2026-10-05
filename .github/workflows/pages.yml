@@ -1,0 +1,62 @@
+# Hourly: build today's listings page with the user's default search and publish it to GitHub Pages.
+name: Publish listings
+
+on:
+  schedule:
+    - cron: '7 * * * *'        # every hour at :07 (UTC; the script itself runs on Belgrade time)
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: Europe/Belgrade        # "today" = the Belgrade calendar day
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Seen set (NEW marks) and per-listing details (lift, duplex) carry over between runs.
+      - uses: actions/cache@v4
+        with:
+          path: |
+            out/belgrade_flats_seen.json
+            out/belgrade_flats_details.json
+          key: state-${{ github.run_id }}
+          restore-keys: state-
+
+      - name: Build page
+        run: |
+          python scripts/belgrade_flats.py --today --limit 0 --sort price \
+            --max-price 250000 --max-price-m2 4000 \
+            --district "stari grad" --district "savski venac" --district "banovo brdo"
+          mkdir -p site
+          cp out/belgrade_flats.html site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
