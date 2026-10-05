@@ -425,7 +425,7 @@ def dupe_links(f):
     return f'<div class="also">то же объявление ещё на: {links}</div>'
 
 
-def write_html(flats, a):
+def write_html(flats, a, errors=()):
     cards = []
     for f in flats:
         per = f'{f.price / f.m2:,.0f} €/м²'.replace(',', ' ') if f.price and f.m2 else ''
@@ -446,6 +446,7 @@ def write_html(flats, a):
 @media (prefers-color-scheme:dark){{:root{{--bg:#161615;--card:#22221f;--fg:#ecebe6;--mut:#9a9a92;--acc:#fb923c;--ok:#4ade80;--okbg:#14241a;--bad:#f87171;--badbg:#2a1616}}}}
 body{{margin:0;padding:16px;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,sans-serif}}
 h1{{font-size:20px;margin:0 0 4px}} .sub{{color:var(--mut);margin-bottom:16px}}
+.err{{background:var(--badbg);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;margin-bottom:14px}}
 .grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}}
 .card{{background:var(--card);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none;box-shadow:0 1px 3px #0002}}
 .card.new{{outline:2px solid var(--acc)}}
@@ -467,6 +468,7 @@ h1{{font-size:20px;margin:0 0 4px}} .sub{{color:var(--mut);margin-bottom:16px}}
   border-radius:8px;background:#000b;color:#fff;font-size:12px}} .fl-ov svg{{display:block}} .place{{font-weight:600;margin:4px 0}}
 .title{{font-size:13px;margin-bottom:6px;font-style:italic;color:var(--mut)}}
 </style></head><body>
+{''.join(f'<div class="err">⚠️ Источник не ответил, его объявлений здесь нет: {html.escape(e)}</div>' for e in errors)}
 <h1>Квартиры на продажу в Белграде — {'от дешёвых к дорогим' if a.sort == 'price' else 'сначала новые'}</h1>
 <div class="sub">{len(flats)} объявл., новых: {sum(f.new for f in flats)}{tier_note(flats, a)} · загружено {datetime.now():%Y-%m-%d %H:%M}
 {html.escape(' · фильтры: ' + ' '.join(sys.argv[1:])) if len(sys.argv) > 1 else ''}</div>
@@ -548,7 +550,7 @@ def run_once(a, seen, first_run):
     if a.json:
         print(json.dumps([asdict(f) for f in flats], ensure_ascii=False, indent=1))
     else:
-        write_html(flats, a)
+        write_html(flats, a, errors)
     return flats
 
 
