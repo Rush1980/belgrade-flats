@@ -58,6 +58,8 @@ out/                  # generated, gitignored
 - **halooglasi (behind Cloudflare) answers 403 to cloud IPs**: GitHub Actions (Azure) and gitlab.com
   shared runners (Google Cloud, US) both got 403 on 2026-10-05, while 4zida answered 200 from both.
   It works from a home connection. Do not try to get around the block (spoofing, third-party proxies).
+- Neither site has a public API contract; a layout change breaks that source and is reported
+  as an error line while the other source still works.
 
 ## Published page
 
@@ -67,8 +69,7 @@ noreply address set in the local git config). Pages serves branch `site` as is (
 Windows Task Scheduler task **"Belgrade flats publish"** runs it hourly via pythonw while the PC is on.
 The search it publishes is the `SEARCH` list in publish.py — change it there when the user's default
 filters change. No GitHub Actions: they were removed because runners only get 4zida.
-- Neither site has a public API contract; a layout change breaks that source and is reported
-  as an error line while the other source still works.
+
 
 ## Default search (user preference)
 
