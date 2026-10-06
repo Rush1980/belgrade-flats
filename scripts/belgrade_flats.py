@@ -247,6 +247,19 @@ def norm(s):
     return s.lower().translate(str.maketrans('čćšžđ', 'ccszd'))
 
 
+def _published_dt(f):
+    """4zida's exact time as an aware datetime (it comes in UTC, '...+00:00')."""
+    dt = datetime.fromisoformat(f.published)
+    return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+
+
+def when_local(f):
+    """Publish time for display, in local (Belgrade) time; halooglasi has the day only."""
+    if 'T' not in f.published:
+        return f.published
+    return f'{_published_dt(f).astimezone():%Y-%m-%d %H:%M}'
+
+
 def keep(f, a):
     if a.min_price and (f.price is None or f.price < a.min_price): return False
     if a.max_price and (f.price is None or f.price > a.max_price): return False
@@ -256,6 +269,7 @@ def keep(f, a):
     if a.rooms and f.rooms not in a.rooms: return False
     if a.since and f.published[:10] < a.since: return False
     if a.until and f.published[:10] > a.until: return False
+    if a.since_dt and 'T' in f.published and _published_dt(f) < a.since_dt: return False
     if a.district and not any(norm(d) in norm(f.place + ' ' + f.title) for d in a.district): return False
     return True
 
@@ -388,7 +402,7 @@ def fmt_price(p):
 def print_table(flats, limit):
     for f in flats[:limit]:
         per = f' ({f.price / f.m2:,.0f} €/м²)'.replace(',', ' ') if f.price and f.m2 else ''
-        when = f.published[:16].replace('T', ' ')
+        when = when_local(f)
         print(f"{'НОВ ' if f.new else '    '}{TIER_MARK.get(f.tier, '  ')}{when:16}  {fmt_price(f.price):>11}{per:16} "
               f"{(f'{f.m2:g} м²' if f.m2 else '—'):>8}  {rooms_ru(f.rooms):>9}  {floor_ru(f.floor):18} "
               f"{place_ru(f.place)[:40]}")
@@ -437,7 +451,7 @@ def write_html(flats, a, errors=()):
     <div class="floor">🏢 {html.escape(floor_label(f.floor))}</div>
     <div class="place">{html.escape(place_ru(f.place))}</div>
     <div class="title" lang="sr" title="заголовок объявления (оригинал)">{html.escape(f.title)}</div>
-    <div class="foot">{html.escape(f.source)} · опубликовано {html.escape(f.published[:16].replace('T', ' '))}{dupe_links(f)}</div>
+    <div class="foot">{html.escape(f.source)} · опубликовано {html.escape(when_local(f))}{dupe_links(f)}</div>
   </div></a>''')
     page = f'''<!doctype html><html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Квартиры в Белграде</title>
@@ -564,6 +578,9 @@ def main():
     p.add_argument('--since', metavar='YYYY-MM-DD', help='only listings published on or after this day')
     p.add_argument('--until', metavar='YYYY-MM-DD', help='only listings published on or before this day')
     p.add_argument('--today', action='store_true', help='same as --since <today>')
+    p.add_argument('--hours', type=float, metavar='N',
+                   help='last N hours: exact for 4zida; halooglasi has dates only, so its whole days that '
+                        'overlap the window are kept (--hours 24 = today and yesterday)')
     p.add_argument('--yesterday', action='store_true', help='only listings published yesterday (raise --pages)')
     p.add_argument('--source', action='append', choices=['4zida', 'halooglasi'])
     p.add_argument('--pages', type=int, default=3,
@@ -579,8 +596,12 @@ def main():
     p.add_argument('--sort', choices=['date', 'price'], default='date',
                    help='date: newest first (default); price: total price, cheapest first')
     a = p.parse_args()
+    a.since_dt = None
     if a.today:
         a.since = datetime.now().date().isoformat()
+    if a.hours:
+        a.since_dt = datetime.now(timezone.utc) - timedelta(hours=a.hours)
+        a.since = a.since_dt.astimezone().date().isoformat()
     if a.yesterday:
         a.since = a.until = (datetime.now().date() - timedelta(days=1)).isoformat()
     if sys.stdout.encoding.lower() != 'utf-8':

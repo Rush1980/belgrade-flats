@@ -24,7 +24,7 @@ out/                  # generated, gitignored
 
 | Site | How it is read | Freshness field |
 | --- | --- | --- |
-| 4zida.rs | JSON API `api.4zida.rs/v6/search/apartments?for=sale&placeIds[]=2&sort=createdAtDesc` (placeId 2 = Beograd). Server-side `priceFrom/priceTo/m2From/m2To`. | `createdAt`, exact time (UTC) |
+| 4zida.rs | JSON API `api.4zida.rs/v6/search/apartments?for=sale&placeIds[]=2&sort=createdAtDesc` (placeId 2 = Beograd). Server-side `priceFrom/priceTo/m2From/m2To`. | `createdAt`, exact time in UTC (`+00:00`); shown in local time |
 | halooglasi.com | List page `/nekretnine/prodaja-stanova/beograd`; JSON in `QuidditaEnvironment.serverListData`, each ad's fields parsed from its `ListHTML`. Server-side `cena_d_from/to` (unit 4 = EUR), `kvadratura_d_from/to` (unit 1 = m²). Read in full every run (see below). | `publish-date`, day only |
 | nekretnine.rs | Not used — returns 403 to scripted clients. | — |
 
@@ -67,6 +67,8 @@ https://rush1980.github.io/belgrade-flats/ — repo `Rush1980/belgrade-flats` (p
 noreply address set in the local git config). Pages serves branch `site` as is (index.html +
 .nojekyll); `scripts/publish.py` rebuilds it and replaces the branch with a fresh one-commit history.
 Windows Task Scheduler task **"Belgrade flats publish"** runs it hourly via pythonw while the PC is on.
+It publishes the **last 24 hours** (`--hours 24`: exact for 4zida, today + yesterday for halooglasi,
+which has dates only), so the page is not empty after midnight or after the PC slept.
 The search it publishes is the `SEARCH` list in publish.py — change it there when the user's default
 filters change. No GitHub Actions: they were removed because runners only get 4zida.
 
