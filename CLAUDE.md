@@ -67,8 +67,8 @@ https://rush1980.github.io/belgrade-flats/ — repo `Rush1980/belgrade-flats` (p
 noreply address set in the local git config). Pages serves branch `site` as is (index.html +
 .nojekyll); `scripts/publish.py` rebuilds it and replaces the branch with a fresh one-commit history.
 Windows Task Scheduler task **"Belgrade flats publish"** runs it hourly via pythonw while the PC is on.
-It publishes the **last 24 hours** (`--hours 24`: exact for 4zida, today + yesterday for halooglasi,
-which has dates only), so the page is not empty after midnight or after the PC slept.
+It publishes **today only** (`--today`) — the user's choice on 2026-10-06 after trying `--hours 24`
+(exact for 4zida, today + yesterday for halooglasi). So the page starts empty after midnight.
 The search it publishes is the `SEARCH` list in publish.py — change it there when the user's default
 filters change. No GitHub Actions: they were removed because runners only get 4zida.
 

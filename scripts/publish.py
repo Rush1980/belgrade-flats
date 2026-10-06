@@ -1,4 +1,4 @@
-"""Build the last-24-hours page with the default search and publish it to GitHub Pages.
+"""Build today's page with the default search and publish it to GitHub Pages.
 
     python scripts/publish.py            # what the hourly Windows task runs (via pythonw)
 
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'out'
 LOG = OUT / 'publish.log'
 BRANCH = 'site'
-SEARCH = ['--hours', '24', '--limit', '0', '--sort', 'price', '--max-price', '250000', '--max-price-m2', '4000',
+SEARCH = ['--today', '--limit', '0', '--sort', 'price', '--max-price', '250000', '--max-price-m2', '4000',
           '--district', 'stari grad', '--district', 'savski venac', '--district', 'banovo brdo']
 NO_WINDOW = getattr(subprocess, 'CREATE_NO_WINDOW', 0)     # pythonw: do not flash console windows
 
