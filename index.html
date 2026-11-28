@@ -1,0 +1,876 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Квартиры в Белграде</title>
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--fg:#1d1d1b;--mut:#6b6b66;--acc:#c2410c;--ok:#15803d;--okbg:#f0fdf4;--bad:#b91c1c;--badbg:#fef2f2}
+@media (prefers-color-scheme:dark){:root{--bg:#161615;--card:#22221f;--fg:#ecebe6;--mut:#9a9a92;--acc:#fb923c;--ok:#4ade80;--okbg:#14241a;--bad:#f87171;--badbg:#2a1616}}
+body{margin:0;padding:16px;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,sans-serif}
+h1{font-size:20px;margin:0 0 4px} .sub{color:var(--mut);margin-bottom:16px}
+.err{background:var(--badbg);border:1px solid var(--bad);border-radius:8px;padding:8px 12px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.card{background:var(--card);border-radius:10px;overflow:hidden;color:inherit;text-decoration:none;box-shadow:0 1px 3px #0002}
+.card.new{outline:2px solid var(--acc)}
+.card.cheap{outline:3px solid var(--ok);background:var(--okbg)} .card.cheap .price small{color:var(--ok);font-weight:700}
+.card.dear{outline:3px solid var(--bad);background:var(--badbg)} .card.dear .price small{color:var(--bad);font-weight:700}
+.badge.tier{left:auto;right:8px} .badge.cheap-b{background:var(--ok)} .badge.dear-b{background:var(--bad)}
+.img{height:170px;background:#8883 center/cover;position:relative}
+.tl{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.tl .badge{position:static}
+.duplex{display:flex;align-items:center;gap:5px;padding:4px 9px 4px 5px;border-radius:8px;background:#7c3aede6;color:#fff;font-size:12px}
+.duplex svg{display:block}
+.badge{position:absolute;top:8px;left:8px;background:var(--acc);color:#fff;font-weight:700;font-size:11px;padding:2px 7px;border-radius:4px}
+.body{padding:10px 12px} .price{font-size:18px;font-weight:700} .price small{font-weight:400;color:var(--mut);font-size:12px}
+.meta,.foot{color:var(--mut);font-size:12px} .floor{font-size:13px;font-weight:600;margin-top:2px}
+.also{margin-top:4px;color:var(--fg)} .dupe{text-decoration:underline;cursor:pointer;font-weight:600;margin-right:6px}
+.lift{position:absolute;right:8px;bottom:8px;display:flex;align-items:center;gap:4px;padding:4px 8px 4px 5px;
+  border-radius:8px;background:#1d4ed8e6;color:#fff;font-size:12px} .lift svg{display:block}
+.fl-ov{position:absolute;left:8px;bottom:8px;display:flex;align-items:center;gap:6px;padding:4px 9px 4px 5px;
+  border-radius:8px;background:#000b;color:#fff;font-size:12px} .fl-ov svg{display:block} .place{font-weight:600;margin:4px 0}
+.title{font-size:13px;margin-bottom:6px;font-style:italic;color:var(--mut)}
+.days{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.days button{font:inherit;padding:5px 11px;border-radius:16px;border:1px solid var(--mut);background:var(--card);color:var(--fg);cursor:pointer}
+.days button small{color:var(--mut)} .days button.on{background:var(--acc);border-color:var(--acc);color:#fff} .days button.on small{color:#fffc}
+.card[hidden]{display:none}
+</style></head><body>
+
+<h1>Квартиры на продажу в Белграде — от дешёвых к дорогим</h1>
+<div class="sub"><span id="cnt">65 объявл.</span><span id="tiers"></span> · загружено 2026-11-28 16:05
+ · фильтры: --days 7 --limit 0 --sort price --max-price 250000 --max-price-m2 4000 --district stari grad --district savski venac --district banovo brdo</div>
+<div id="days" class="days" data-open="2026-11-28"><button data-day="2026-11-28">Сегодня <small>1</small></button><button data-day="2026-11-27">Вчера <small>11</small></button><button data-day="2026-11-26">чт 26.11 <small>12</small></button><button data-day="2026-11-25">ср 25.11 <small>7</small></button><button data-day="2026-11-24">вт 24.11 <small>20</small></button><button data-day="2026-11-23">пн 23.11 <small>12</small></button><button data-day="2026-11-22">вс 22.11 <small>2</small></button><button data-day="all">Все 7 дн. <small>65</small></button></div>
+<div id="empty" class="sub" hidden>За этот день объявлений нет.</div>
+<div class="grid"><a class="card" data-day="2026-11-24" data-ppm="2895.8333333333335" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/uknjizena-garsonjera-na-banovom-brdu/5425647949727" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261109/m/uknjizena-garsonjera-na-banovom-brdu-5425647949727-71817595642.jpg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">69 500 € <small>2 896 €/м²</small></div>
+    <div class="meta">24 м² · 1-комн.</div>
+    <div class="floor">🏢 Подвал из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Toše Jovanovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Uknjižena garsonjera na Banovom Brdu</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3769.230769230769" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/investiciona-prilika-koja-se-ne-propusta/5425648027742" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261123/m/investiciona-prilika-koja-se-ne-propusta-5425648027742-71817792643.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">98 000 € <small>3 769 €/м²</small></div>
+    <div class="meta">26 м² · 1.5-комн.</div>
+    <div class="floor">🏢 Партер из 6</div>
+    <div class="place">Savski venac, Ekonomski fakultet, Gavrila Principa</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Investiciona prilika koja se ne propušta!</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3181.818181818182" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/ekonomski-fakultet-gavrila-principa-33m2/5425647580190" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260826/m/ekonomski-fakultet-gavrila-principa-33m2-5425647580190-71816813539.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">105 000 € <small>3 182 €/м²</small></div>
+    <div class="meta">33 м² · 2-комн.</div>
+    <div class="floor">🏢 Партер</div>
+    <div class="place">Savski venac, Ekonomski fakultet, Gavrila Principa</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Ekonomski fakultet, Gavrila Principa, 33m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3633.3333333333335" href="https://www.4zida.rs/prodaja-stanova/gundulicev-venac-stari-grad-opstina-beograd/jednosoban-stan/6b05c2feb116954f0f0fdf3c" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/AYmLhAL_OqsALb-ocgDImFWAUsD6UCzdkDoh-QWqxcY/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNWMyZmViMTE2OTU0ZjBmMGZkZjNjLzM1ZTAwODc0ZWY.jpeg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">109 000 € <small>3 633 €/м²</small></div>
+    <div class="meta">30 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж −1</div>
+    <div class="place">Gundulićev Venac, Stari Grad</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Jednosoban stan na prodaju, Budimska, 109.000€, 30m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-24 18:01<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/stari-grad-gundulicev-venac---budimska/5425648036188','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3633.3333333333335" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/odlicna-prilika-dorcol-30m2/5425648030235" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261123/m/odlicna-prilika-dorcol-30m2-5425648030235-71817797338.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">109 000 € <small>3 633 €/м²</small></div>
+    <div class="meta">30 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж 1</div>
+    <div class="place">Stari grad, Dorćol, Knez Miletina</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Odlična prilika, Dorćol, 30m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3484.848484848485" href="https://www.4zida.rs/prodaja-stanova/sarajevska-savski-venac-beograd/jednosoban-stan/6b04520b0e6e719864059b24" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/duEEkP5otwoVlHim5EAHb-kwZXTMesdv4c3tEsDvVTY/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNDUyMGIwZTZlNzE5ODY0MDU5YjI0L2Y1MzVmZmNhYTE.jpeg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">115 000 € <small>3 485 €/м²</small></div>
+    <div class="meta">33 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж не указан</div>
+    <div class="place">Sarajevska, Savski Venac</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Jednosoban stan na prodaju, Sarajevska, 115.000€, 33m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-23 15:47<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/sarajevska-1-0-stan-id2869/5425647517493','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3285.714285714286" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/obilicev-venac-35m2-sut-ta/5425645842159" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/250731/m/obilicev-venac-35m2-sut-ta-5425645842159-71812472750.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">115 000 € <small>3 286 €/м²</small></div>
+    <div class="meta">35 м² · 1.5-комн.</div>
+    <div class="floor">🏢 Этаж не указан</div>
+    <div class="place">Stari grad, Obilićev venac, Maršala Birjuzova</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Obilićev venac, 35m2, sut, ta</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3787.878787878788" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-park-33m2-1-5sob-35-adapribilan/5425647752452" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261126/m/banovo-brdo-park-33m2-1-5sob-35-adapribilan-5425647752452-71817833939.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">125 000 € <small>3 788 €/м²</small></div>
+    <div class="meta">33 м² · 1.5-комн.</div>
+    <div class="floor">🏢 Этаж 3 из 5</div>
+    <div class="place">Čukarica, Banovo brdo</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo Brdo, park,33m2, 1,5sob, 3/5, adapribilan</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3787.878787878788" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/lokacija-uknjizen-investicija/5425647553428" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260820/m/lokacija-uknjizen-investicija-5425647553428-71816757198.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">125 000 € <small>3 788 €/м²</small></div>
+    <div class="meta">33 м² · 1-комн.</div>
+    <div class="floor">🏢 Партер</div>
+    <div class="place">Savski venac, Sarajevska, Sarajevska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Lokacija, uknjižen, investicija!</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="2309.090909090909" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/odlicna-prilika-55m2-uknjizen/5425647383616" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261118/m/odlicna-prilika-55m2-uknjizen-5425647383616-71817744549.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">127 000 € <small>2 309 €/м²</small></div>
+    <div class="meta">55 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 3</div>
+    <div class="place">Čukarica, Banovo brdo, Udbinska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Odlična prilika, 55m2, uknjižen</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3121.7073170731705" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/uknjizen-sve-novo-lux-senjak/5425647921195" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261103/m/uknjizen-sve-novo-lux-senjak-5425647921195-71817530641.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">127 990 € <small>3 122 €/м²</small></div>
+    <div class="meta">41 м² · 2-комн.</div>
+    <div class="floor">🏢 Выс. партер из 1</div>
+    <div class="place">Savski venac, Senjak, Bulevar vojvode Mišića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Uknjizen, Sve Novo, Lux, Senjak</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3121.951219512195" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/senjak---bulevar-vojvode-misica---uknjizen/5425647460606" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260728/m/senjak---bulevar-vojvode-misica---uknjizen-5425647460606-71816523897.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">128 000 € <small>3 122 €/м²</small></div>
+    <div class="meta">41 м² · 2-комн.</div>
+    <div class="floor">🏢 Выс. партер</div>
+    <div class="place">Savski venac, Senjak, Bulevar vojvode Mišića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Senjak - Bulevar Vojvode Mišića - Uknjižen</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3714.285714285714" href="https://www.4zida.rs/prodaja-stanova/bajlonijeva-pijaca-stari-grad-opstina-beograd/jednosoban-stan/6b09784f526539e3eb089528" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/O452mWorygvX9IEcd6pbUKW4RBcbFmEculq9IPnTgqQ/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwOTc4NGY1MjY1MzllM2ViMDg5NTI4Lzg3NWMzNmNhZTY.jpeg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">130 000 € <small>3 714 €/м²</small></div>
+    <div class="meta">35 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж −1</div>
+    <div class="place">Bajlonijeva Pijaca, Stari Grad</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Jednosoban stan na prodaju, Džordža Vašingtona, 130.000€, 35m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-27 13:32<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/bajlonijeva-pijaca-dvorisni-stan/5425648048872','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3333.3333333333335" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/odlicna-investicija-2-0-stan-ukupne-povrsine/5425647821715" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261014/m/banovo-brdo-pozeska-odlicna-investicija-1-5-5425647821715-71817324649.jpg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">130 000 € <small>3 333 €/м²</small></div>
+    <div class="meta">39 м² · 2-комн.</div>
+    <div class="floor">🏢 Подвал из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Požeška</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Odlična investicija, 2.0 stan, ukupne površine 61 </div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3538.4615384615386" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/potkrovlje-kod-beograda-na-vodi/5425647869446" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261023/m/potkrovlje-kod-beograda-na-vodi-5425647869446-71817423321.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">138 000 € <small>3 538 €/м²</small></div>
+    <div class="meta">39 м² · 1.5-комн.</div>
+    <div class="floor">🏢 Этаж 4 из 5</div>
+    <div class="place">Savski venac, Ekonomski fakultet, Koče Popovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Potkrovlje kod Beograda na vodi</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3818.6813186813188" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/uknjizen-useljiv-petra-lekovica/5425648002483" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261118/m/uknjizen-useljiv-petra-lekovica-5425648002483-71817744372.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">139 000 € <small>3 819 €/м²</small></div>
+    <div class="meta">36.4 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Petra Lekovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Uknjižen, useljiv, Petra Lekovića</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/uknjizen-useljiv-petra-lekovica-id1411/5425647458714','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="1934.2105263157894" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/top-ponuda---dupleks-76m-odlicna-investicija/5425648045176" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261126/m/top-ponuda---dupleks-76m-odlicna-investicija-5425648045176-71817830327.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div></div>
+  <div class="body">
+    <div class="price">147 000 € <small>1 934 €/м²</small></div>
+    <div class="meta">76 м² · 4-комн.</div>
+    <div class="floor">🏢 Этаж 5 из 6</div>
+    <div class="place">Čukarica, Banovo brdo, Lješka</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">TOP ponuda - Dupleks 76m², odlična investicija</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3947.3684210526317" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dorcol-skender-begova/5425647861392" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261023/m/dorcol-skender-begova-5425647861392-71817419544.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">150 000 € <small>3 947 €/м²</small></div>
+    <div class="meta">38 м² · 1-комн.</div>
+    <div class="floor">🏢 Этаж 5 из 5</div>
+    <div class="place">Stari grad, Dorćol, Skender Begova</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dorćol, Skender-Begova</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3534.8837209302324" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/odlican-stan-uknjizen-top-lokacija/5425647654912" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260909/m/odlican-stan-uknjizen-top-lokacija-5425647654912-71816965969.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">152 000 € <small>3 535 €/м²</small></div>
+    <div class="meta">43 м² · 2-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Čukarica, Banovo brdo, Žarka Vukovića Pucara</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Odličan stan, uknjižen, top lokacija</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3534.8837209302324" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/dvoiposoban-stan/6b049174e1bbc803cb0f6793" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/gTinM9jj9uQAmhvOFWuU5MPMFz68ujUmXNoeLdyejQs/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNDkxNzRlMWJiYzgwM2NiMGY2NzkzL2ZiZTM0MTM4NTA.jpeg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">152 000 € <small>3 535 €/м²</small></div>
+    <div class="meta">43 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Этаж −1 из 4</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvoiposoban stan na prodaju, Banovo Brdo, 152.000€, 43m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-23 20:18<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-2-5-uz-sam-park-retko-u-ponudi/5425648001000','_blank','noopener')">halooglasi ↗</span> <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/cukarica-banovo-brdo---zarka-vukovica-pucara/5425647712990','_blank','noopener')">halooglasi ↗</span> <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/odlicna-lokacija-2-spavace-sobe-okrenut-ka-pa/5425648031143','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-22" data-ppm="3340.425531914894" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo---zarka-vukovica-pucara-id2358/5425647694977" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260918/m/banovo-brdo---zarka-vukovica-puca-id2358-5425647694977-71817059879.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">157 000 € <small>3 340 €/м²</small></div>
+    <div class="meta">47 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Čukarica, Banovo brdo, Žarka Vukovića-Pucara</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo - Žarka Vukovića Pucara ID#2358</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-22</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="2839.285714285714" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/lep-porodican-2-0-banovo-brdo/5425648048884" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261127/m/lep-porodican-2-0-banovo-brdo-5425648048884-71817843945.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">159 000 € <small>2 839 €/м²</small></div>
+    <div class="meta">56 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 2</div>
+    <div class="place">Čukarica, Banovo brdo, Jovana Dučića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Lep, porodičan, 2.0, Banovo brdo</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3455.723542116631" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/stan-u-novogradnji-na-odlicnoj-lokaciji-id123/5425646121583" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261115/m/stan-u-novogradnji-na-odlicnoj-lokaciji-id123-5425646121583-71817704702.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">160 000 € <small>3 456 €/м²</small></div>
+    <div class="meta">46.3 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 3</div>
+    <div class="place">Čukarica, Banovo brdo, Milorada Jovanovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Stan u novogradnji na odličnoj lokaciji ID#12386</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3543.478260869565" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/stari-grad-dorcol---cara-dusana/5425647329394" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260625/m/stari-grad-dorcol---cara-dusana-5425647329394-71816201650.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">163 000 € <small>3 543 €/м²</small></div>
+    <div class="meta">46 м² · 2-комн.</div>
+    <div class="floor">🏢 Партер из 1</div>
+    <div class="place">Stari grad, Dorćol, Cara Dušana</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Stari grad, Dorćol - Cara Dušana</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3489.3617021276596" href="https://www.4zida.rs/prodaja-stanova/kosancicev-venac-stari-grad-opstina-beograd/dvosoban-stan/6b0718d35d8c3ce4d60f78bb" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/-fT79JzsV-AJ3Qg2n9En42ZggaOBt0IQiFZIQ3W4gX0/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNzE4ZDM1ZDhjM2NlNGQ2MGY3OGJiLzQ2ZDgxY2RjMDY.jpeg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div></div>
+  <div class="body">
+    <div class="price">164 000 € <small>3 489 €/м²</small></div>
+    <div class="meta">47 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 2</div>
+    <div class="place">Kosančićev Venac, Stari Grad</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvosoban stan na prodaju, Brankova, 164.000€, 47m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-25 18:20</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="2115.3846153846152" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/blagoja-parovica-dupleks-sa-galerijom-od-78-m/5425648052452" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261127/m/blagoja-parovica-dupleks-sa-galerijom-od-78-m-5425648052452-71817844812.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div></div>
+  <div class="body">
+    <div class="price">165 000 € <small>2 115 €/м²</small></div>
+    <div class="meta">78 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 5 из 6</div>
+    <div class="place">Čukarica, Banovo brdo, Blagoja Parovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Blagoja Parovića, dupleks sa galerijom od 78 m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3000.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-55-m2-cg-iiii-dvoriste/5425647719879" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260923/m/banovo-brdo-55-m2-cg-iiii-dvoriste-5425647719879-71817115868.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">165 000 € <small>3 000 €/м²</small></div>
+    <div class="meta">55 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 2</div>
+    <div class="place">Čukarica, Banovo brdo</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, 55 m2, CG, II/II, dvoriste</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3863.6363636363635" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-1-5-stan-id16378/5425647694932" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261115/m/banovo-brdo-1-5-stan-id16378-5425647694932-71817696738.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">170 000 € <small>3 864 €/м²</small></div>
+    <div class="meta">44 м² · 1.5-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 4</div>
+    <div class="place">Čukarica, Banovo brdo, Kraljice Katarine</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, 1.5 stan ID#16378</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3353.9411764705883" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/dvosoban-stan/6b05b0da2b20aafb8608f7c2" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/vIkKgFZjlWwVyyd_OdkkXP_zIoHRQH7ZkynlPaZwSlc/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNWIwZGEyYjIwYWFmYjg2MDhmN2MyL2ZmNThiZTA0YjM.jpeg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">171 051 € <small>3 354 €/м²</small></div>
+    <div class="meta">51 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж −3 из 4</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvosoban stan na prodaju, Banovo Brdo, 171.051€, 51m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-24 16:44<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/dvosoban-stan-51m2-banovo-brdo/5425648035989','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3500.0" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/dvosoban-stan/6b0440f04cffc36faf02d1e0" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/dPyGw2ht24AIlwpQXdv7JDvt2bl7YZh4bdxP0MhnCGY/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNDQwZjA0Y2ZmYzM2ZmFmMDJkMWUwLzNkYTEzZGQ5ZDc.jpeg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">175 000 € <small>3 500 €/м²</small></div>
+    <div class="meta">50 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 4 из 5</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvosoban stan na prodaju, Požeška, 175.000€, 50m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-23 14:34<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-pozeska-50m2-id14944/5425648028917','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3645.8333333333335" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/dvosoban-stan/6b041fa3d155deca3b05f159" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/U6B4-JQnlkSGPjoBVMiWSopWqTmWvcYFGeTU4QgZ7AE/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNDFmYTNkMTU1ZGVjYTNiMDVmMTU5LzM4MzY2MTQ5ODQ.jpeg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">175 000 € <small>3 646 €/м²</small></div>
+    <div class="meta">48 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 2</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvosoban stan na prodaju, Steve Todorovića, 175.000€, 48m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-23 12:12<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/odlican-2-0-u-parku---banovo-brdo/5425648027792','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3236.3636363636365" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/cukarica-banovo-brdo-pozeska-investicija-za-p/5425646824109" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260227/m/cukarica-banovo-brdo-pozeska-investicija-za-p-5425646824109-71814868605.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">178 000 € <small>3 236 €/м²</small></div>
+    <div class="meta">55 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 1</div>
+    <div class="place">Čukarica, Banovo brdo, Rajka od Rasine</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Čukarica, Banovo brdo, Požeška, investicija za pre</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="2781.25" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/stan-poslovni-prostor-u-strogom-centru/5425647423626" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261126/m/stan-poslovni-prostor-u-strogom-centru-5425647423626-71817833584.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">178 000 € <small>2 781 €/м²</small></div>
+    <div class="meta">64 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 6</div>
+    <div class="place">Stari grad, Dorćol, Višnjićeva</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Stan | poslovni prostor u strogom centru</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3357.1428571428573" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/savski-venac-centar-parking-renoviran-56m2/5425645728440" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/250703/m/savski-venac-palata-pravde-parking-renoviran-5425645728440-71812182225.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">188 000 € <small>3 357 €/м²</small></div>
+    <div class="meta">56 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 4 из 4</div>
+    <div class="place">Savski venac, Centar, Bulevar kralja Aleksandra I Karađorđevića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Savski venac, centar, parking, renoviran 56m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-28" data-ppm="2370.085685483871" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/lux-novogradnja-odmah-useljivo/5425647303761" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260723/m/lux-novogradnja-na-banovom-brdu-5425647303761-71816480510.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">188 090 € <small>2 370 €/м²</small></div>
+    <div class="meta">79.36 м² · 2-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Čukarica, Banovo brdo, Karpoševa</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Lux novogradnja, odmah useljivo</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-28</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3454.5454545454545" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-funkcionalan-2-0-stan-505m2-lodja/5425647892767" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261028/m/banovo-funkcionalan-2-0-stan-55m-sa-liftom-5425647892767-71817468449.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">190 000 € <small>3 455 €/м²</small></div>
+    <div class="meta">55 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 5 из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Zrmanjska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)"> Banovo brdo funkcionalan 2,0 stan 50+5m2 lođa</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3622.6415094339623" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-2-0-sa-2-terase-dvoristem-i-lokal/5425647992388" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261116/m/banovo-brdo-2-0-sa-2-terase-dvoristem-i-lokal-5425647992388-71817721546.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div></div>
+  <div class="body">
+    <div class="price">192 000 € <small>3 623 €/м²</small></div>
+    <div class="meta">53 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 3</div>
+    <div class="place">Čukarica, Banovo brdo, Mira Popare</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo Brdo, 2.0 sa 2 terase, dvorištem i lokalom!</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3880.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/balkanska-beograd/5425647461802" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260728/m/balkanska-beograd-5425647461802-71816527846.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">194 000 € <small>3 880 €/м²</small></div>
+    <div class="meta">50 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 6</div>
+    <div class="place">Savski venac, Balkanska, Milovana Milovanovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Balkanska Beograd</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3473.684210526316" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dvoiposoban-stan-57m2-savski-venac-hajd-park/5425647730977" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260925/m/dvoiposoban-stan-57m2-savski-venac-hajd-park-5425647730977-71817129671.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">198 000 € <small>3 474 €/м²</small></div>
+    <div class="meta">57 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Этаж 13 из 14</div>
+    <div class="place">Savski venac, Prokop, Stjepana Filipovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvoiposoban stan 57m2, Savski venac, Hajd park</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="2360.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dorcol-brace-baruh-4-0-84-m2/5425645029751" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260116/m/dorcol-brace-baruh-4-0-84-m2-5425645029751-71814378412.jpg')"><div class="tl"></div><span class="fl-ov fl-basement"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#facc15" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Подвал</b></span></div>
+  <div class="body">
+    <div class="price">198 240 € <small>2 360 €/м²</small></div>
+    <div class="meta">84 м² · 4-комн.</div>
+    <div class="floor">🏢 Подвал из 4</div>
+    <div class="place">Stari grad, Dorćol, Braće Baruh</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dorcol, Brace Baruh, 4.0, 84 m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3316.6666666666665" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/56m-terasa-4m/5425645988339" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/250902/m/odustali-od-prodaje-5425645988339-71812813266.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">199 000 € <small>3 317 €/м²</small></div>
+    <div class="meta">60 м² · 3-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Savski venac, Dedinje, Mihajla Avramovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">56m + terasa 4m</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3209.6774193548385" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/ljeska-banovo-brdo-cukarica/5425648036090" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261124/m/ljeska-banovo-brdo-cukarica-5425648036090-71817810950.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">199 000 € <small>3 210 €/м²</small></div>
+    <div class="meta">62 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Lješka</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Lješka, Banovo brdo, Čukarica</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3759.259259259259" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dedinje-dobar-uknjizen-stan/5425647734741" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260926/m/dedinje-dobar-uknjizen-stan-5425647734741-71817142892.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">203 000 € <small>3 759 €/м²</small></div>
+    <div class="meta">54 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 3 из 3</div>
+    <div class="place">Savski venac, Dedinje, Sime Lozanića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dedinje, dobar, uknjižen stan</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="2945.205479452055" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/centar-povoljno/5425647228674" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260602/m/investicija-stan-na-dan-idealno-5425647228674-71815950458.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">215 000 € <small>2 945 €/м²</small></div>
+    <div class="meta">73 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 1</div>
+    <div class="place">Savski venac, Karađorđeva, Braće Krsmanović</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Centar, povoljno</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3981.4814814814813" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/perfektan-komforan-2-5-soban-jedna-od-najbolj/5425647350381" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260630/m/perfektan-konforan-2-soban-jedna-od-najboljih-5425647350381-71816254168.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">215 000 € <small>3 981 €/м²</small></div>
+    <div class="meta">54 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Выс. партер из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Karpoševa</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Perfektan, komforan 2,5-soban. Jedna od najboljih </div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3428.5714285714284" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/dvosoban-stan/6b08308be0d6c3a06b0512e5" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/2lGg5ahy_WfV5r9Kh3ibpnGzTq5XTexhW1Biza0JofM/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwODMwOGJlMGQ2YzNhMDZiMDUxMmU1L2E5MjU1ZTE1Yjc.jpeg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">216 000 € <small>3 429 €/м²</small></div>
+    <div class="meta">63 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 4</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dvosoban stan na prodaju, Nikolaja Gogolja, 216.000€, 63m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-26 14:13<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-centar-uknjizen/5425648045785','_blank','noopener')">halooglasi ↗</span> <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-centar-uknjizen/5425648045299','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="3460.3174603174602" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-2-0-dvostran-retko-u-ponudi/5425647720706" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260923/m/banovo-brdo-pozeska-2-0-dvostran-retko-u-ponu-5425647720706-71817108781.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">218 000 € <small>3 460 €/м²</small></div>
+    <div class="meta">63 м² · 2-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 5</div>
+    <div class="place">Čukarica, Banovo brdo, Nikolaja Gogolja</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, 2.0 dvostran, retko u ponudi</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="2950.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-t-jovanovica-74m2t/5425647121940" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260508/m/banovo-brdo-t-jovanovica-74m2t20m2-5425647121940-71815667175.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">218 300 € <small>2 950 €/м²</small></div>
+    <div class="meta">74 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 6</div>
+    <div class="place">Čukarica, Banovo brdo, Toše Jovanovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo-T. Jovanovića, 74m2+T</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3590.1639344262294" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dorcol-dva-stana-u-jednom-61m2-i-sprat-id2192/5425647411246" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260715/m/dorcol-61m2-i-sprat-id2192-5425647411246-71816401494.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">219 000 € <small>3 590 €/м²</small></div>
+    <div class="meta">61 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 2</div>
+    <div class="place">Stari grad, Dorćol, Cara Dušana</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dorčol,dva stana u jednom,61m2,I sprat ID#2192</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-22" data-ppm="2959.4594594594596" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dedinje---trosoban-stan/5425647675845" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260914/m/jedinstven-trosoban-stan-5425647675845-71817009643.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">219 000 € <small>2 959 €/м²</small></div>
+    <div class="meta">74 м² · 3-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Savski venac, Dedinje, Mihaila Avramovića</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dedinje - trosoban stan</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-22</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="4000.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-kraljice-katarine-kao-2-5-uknjize/5425647791475" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261007/m/banovo-brdo-kraljice-katarine-kao-2-5-uknjize-5425647791475-71817258250.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">220 000 € <small>4 000 €/м²</small></div>
+    <div class="meta">55 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 4</div>
+    <div class="place">Čukarica, Banovo brdo, Kraljice Katarine</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, Kraljice Katarine, kao 2,5, uknjižen</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3614.1639344262294" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/trosoban-stan/6b05b0d92b20aafb8608f7bf" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/gHEeQh_cSrfS8Gaisag0tf_Y2bR-RI47yaUAJUJ5048/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNWIwZDkyYjIwYWFmYjg2MDhmN2JmL2M0NTVlNmMyZTM.jpeg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">220 464 € <small>3 614 €/м²</small></div>
+    <div class="meta">61 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 4</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Trosoban stan na prodaju, Banovo Brdo, 220.464€, 61m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-24 16:44<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/trosoban-stan-61m2-banovo-brdo/5425648035988','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="3400.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/dorcol-cara-dusana-66m2/5425646692242" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260128/m/dorcol-cara-dusana-66m2-5425646692242-71814515937.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">224 400 € <small>3 400 €/м²</small></div>
+    <div class="meta">66 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 2</div>
+    <div class="place">Stari grad, Dorćol, Cara Dušana</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Dorćol, Cara Dušana, 66m2</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3352.9411764705883" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/trosoban-stan-68-m-hitna-prodaja/5425647875700" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261105/m/trosoban-stan-68-m-hitna-prodaja-5425647875700-71817556973.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">228 000 € <small>3 353 €/м²</small></div>
+    <div class="meta">68 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 3 из 4</div>
+    <div class="place">Savski venac, Sarajevska, Sarajevska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Trosoban Stan | 68 m² | Hitna Prodaja</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-25" data-ppm="2875.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/investiciona-prilika-na-dedinju-stan-sa-basto/5425647882975" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261026/m/investiciona-prilika-na-dedinju-stan-sa-basto-5425647882975-71817446663.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span></div>
+  <div class="body">
+    <div class="price">230 000 € <small>2 875 €/м²</small></div>
+    <div class="meta">80 м² · 2-комн.</div>
+    <div class="floor">🏢 Низк. партер из 3</div>
+    <div class="place">Savski venac, Dedinje, Slavka Ćuruvije</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Investiciona prilika na Dedinju – stan sa baštom o</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-25</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3709.6774193548385" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/autokomanda-lux-62m2-id17103/5425648035142" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261124/m/autokomanda-trosoban-stan-lux-62m2-id17103-5425648035142-71817809158.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">230 000 € <small>3 710 €/м²</small></div>
+    <div class="meta">62 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 3</div>
+    <div class="place">Savski venac, Autokomanda, Oblakovska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Autokomanda, lux, 62m2 ID#17103</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3484.848484848485" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/urbano-potkrovlje-na-dorcolu/5425648032268" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261124/m/urbano-potkrovlje-na-dorcolu-5425648032268-71817804216.jpg')"><div class="tl"></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">230 000 € <small>3 485 €/м²</small></div>
+    <div class="meta">66 м² · 2.5-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 2</div>
+    <div class="place">Stari grad, Dorćol, Cara Dušana</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Urbano potkrovlje na Dorćolu</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="2416.6666666666665" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/izuzetno-povoljan-uknjizen-3-5-stan-terasa-25/5425644787532" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260403/m/centar-vojvode-milenka-3-5-96-m2-terasa-25-m2-5425644787532-71815300853.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div><span class="fl-ov fl-top"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#facc15"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#ffffff55"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Последний этаж</b></span></div>
+  <div class="body">
+    <div class="price">232 000 € <small>2 417 €/м²</small></div>
+    <div class="meta">96 м² · 3.5-комн.</div>
+    <div class="floor">🏢 Этаж 3 из 3</div>
+    <div class="place">Savski venac, Centar, Vojvode Milenka</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Izuzetno povoljan uknjizen 3.5 stan, terasa 25 m2!</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3304.225352112676" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/stan-na-prodaju-pozeska-3-0/5425647716041" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/260922/m/stan-na-prodaju-pozeska-3-0-5425647716041-71817097462.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">234 600 € <small>3 304 €/м²</small></div>
+    <div class="meta">71 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 3 из 5</div>
+    <div class="place">Čukarica, Banovo brdo</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Stan na prodaju, Požeška, 3.0</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-27" data-ppm="3148.8801054018445" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-3-0-novogradnja/5425647819455" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261013/m/banovo-brdo-3-0-novogradnja-5425647819455-71817315324.jpg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">239 000 € <small>3 149 €/м²</small></div>
+    <div class="meta">75.9 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1</div>
+    <div class="place">Čukarica, Banovo brdo, Karpoševa</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, 3.0 novogradnja</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-27</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3500.0" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/lux-3-0/5425648032271" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261124/m/lux-3-0-5425648032271-71817804235.jpg')"><div class="tl"></div><span class="fl-ov fl-ground"><svg viewBox="0 0 44 54" width="30" height="37" aria-hidden="true">
+<polygon points="3,19 22,4 41,19" fill="#ffffff55"/>
+<rect x="7" y="20" width="30" height="9" fill="#ffffff55"/><rect x="7" y="30" width="30" height="9" fill="#facc15"/>
+<line x1="0" y1="41" x2="44" y2="41" stroke="#fff" stroke-width="1.5"/>
+<rect x="7" y="43" width="30" height="9" fill="#ffffff55" stroke="#fff" stroke-dasharray="2 2" stroke-width=".8"/></svg><b>Приземье</b></span><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">243 075 € <small>3 500 €/м²</small></div>
+    <div class="meta">69.45 м² · 3-комн.</div>
+    <div class="floor">🏢 Партер из 4</div>
+    <div class="place">Čukarica, Banovo brdo</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Lux 3.0</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-24</div>
+  </div></a><a class="card" data-day="2026-11-23" data-ppm="2998.7951807228915" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-pozeska-83m2-id2611/5425647930058" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/261105/m/banovo-brdo-pozeska-85m2-id2611-5425647930058-71817554252.jpg')"><div class="tl"></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">248 900 € <small>2 999 €/м²</small></div>
+    <div class="meta">83 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 6</div>
+    <div class="place">Čukarica, Banovo brdo, Požeška</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo, Požeška, 83m2 ID#2611</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-23</div>
+  </div></a><a class="card" data-day="2026-11-26" data-ppm="3246.753246753247" href="https://www.halooglasi.com/nekretnine/prodaja-stanova/banovo-brdo-izvorska-725-v-i-vi-dupleks/5425491881534" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://img.halooglasi.com//slike/oglasi/Thumbs/170323/m/banovo-brdo-izvorska-725-v-i-vi-dupleks-105-0-5425491881534-71782233361.jpg')"><div class="tl"><span class="duplex" title="Дуплекс — квартира на двух уровнях"><svg viewBox="0 0 28 28" width="24" height="24" aria-hidden="true">
+<rect x="2" y="2" width="24" height="24" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="2" y1="14" x2="26" y2="14" stroke="#fff" stroke-width="1.8"/>
+<path d="M12 24h3.5v-3.3h3.5v-3.3h3.5v-3.4" fill="none" stroke="#facc15" stroke-width="2" stroke-linejoin="round"/>
+<text x="5" y="11" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">2</text>
+<text x="5" y="23" font-size="8" font-weight="700" fill="#fff" font-family="system-ui,sans-serif">1</text>
+</svg><b>дуплекс</b></span></div><span class="lift" title="Есть лифт"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+<rect x="4" y="2.5" width="16" height="19" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+<line x1="12" y1="2.5" x2="12" y2="21.5" stroke="#fff" stroke-width="1.2"/>
+<polygon points="8,6.5 10.5,10 5.5,10" fill="#fff"/><polygon points="16,10 18.5,6.5 13.5,6.5" fill="#fff"/>
+</svg><b>лифт</b></span></div>
+  <div class="body">
+    <div class="price">250 000 € <small>3 247 €/м²</small></div>
+    <div class="meta">77 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 5 из 6</div>
+    <div class="place">Čukarica, Banovo brdo, Izvorska</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Banovo brdo,Izvorska,72+5, V i VI dupleks</div>
+    <div class="foot">halooglasi · опубликовано 2026-11-26</div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3424.6575342465753" href="https://www.4zida.rs/prodaja-stanova/kraljice-natalije-savski-venac-beograd/trosoban-stan/6b058327842d729439061972" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/R4jCW9zubadObzS4FI613A63acbQmY4eMtmx2tqIiOQ/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNTgzMjc4NDJkNzI5NDM5MDYxOTcyL2IwZWEzYTEwMjA.jpeg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">250 000 € <small>3 425 €/м²</small></div>
+    <div class="meta">73 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 2 из 3</div>
+    <div class="place">Kraljice Natalije, Savski Venac</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Trosoban stan na prodaju, Balkanska, 250.000€, 73m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-24 13:29<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/salonac-uknjizen-adaptbilan/5425648033009','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a><a class="card" data-day="2026-11-24" data-ppm="3048.7804878048782" href="https://www.4zida.rs/prodaja-stanova/banovo-brdo-cukarica-opstina-beograd/trosoban-stan/6b05677bc00cc64ef609e40d" target="_blank" rel="noopener">
+  <div class="img" style="background-image:url('https://resizer2.4zida.rs/FskTuTMl1iiEA-2eIGaZvZt1-9DxhZGhal1bIuJ4OsA/rs:fill:380:0:0/bG9jYWw6Ly8vNmIwNTY3N2JjMDBjYzY0ZWY2MDllNDBkL2RhZTFiNmEyZTg.jpeg')"><div class="tl"></div></div>
+  <div class="body">
+    <div class="price">250 000 € <small>3 049 €/м²</small></div>
+    <div class="meta">82 м² · 3-комн.</div>
+    <div class="floor">🏢 Этаж 1 из 3</div>
+    <div class="place">Banovo Brdo, Čukarica</div>
+    <div class="title" lang="sr" title="заголовок объявления (оригинал)">Trosoban stan na prodaju, Nikolaja Gogolja, 250.000€, 82m²</div>
+    <div class="foot">4zida · опубликовано 2026-11-24 11:31<div class="also">то же объявление ещё на: <span class="dupe" role="link" tabindex="0" onclick="event.preventDefault();event.stopPropagation();window.open('https://www.halooglasi.com/nekretnine/prodaja-stanova/cukarica-banovo-brdo---nikolaja-gogolja/5425648034278','_blank','noopener')">halooglasi ↗</span></div></div>
+  </div></a></div>
+<script>const SHARE = 33.3;
+const cards = [...document.querySelectorAll('.card')], picker = document.getElementById('days');
+function show() {
+  const want = location.hash.slice(1) || picker?.dataset.open || 'all';
+  const on = cards.filter(c => want === 'all' || c.dataset.day === want);
+  cards.forEach(c => { c.hidden = !on.includes(c); c.classList.remove('cheap', 'dear'); c.querySelector('.tier')?.remove(); });
+  picker?.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.day === want));
+  const per = on.map(c => +c.dataset.ppm).filter(v => v).sort((x, y) => x - y), k = Math.round(per.length * SHARE / 100);
+  const n = {cheap: 0, dear: 0};
+  if (k) on.forEach(c => {
+    const v = +c.dataset.ppm, t = !v ? '' : v <= per[k - 1] ? 'cheap' : v >= per[per.length - k] ? 'dear' : '';
+    if (!t) return;
+    n[t]++; c.classList.add(t);
+    c.querySelector('.img').insertAdjacentHTML('beforeend', `<span class="badge tier ${t}-b">${t == 'cheap' ? 'дёшево' : 'дорого'} за м²</span>`);
+  });
+  const eur = v => Math.round(v).toLocaleString('ru-RU') + ' €/м²';
+  document.getElementById('cnt').textContent = `${on.length} объявл., новых: ${on.filter(c => c.classList.contains('new')).length}`;
+  document.getElementById('tiers').innerHTML = !k ? '' : ` · по цене за м²: <b style="color:var(--ok)">зелёные</b> — ${SHARE}% самых дешёвых ` +
+    `(${n.cheap} шт., до ${eur(per[k - 1])}), <b style="color:var(--bad)">красные</b> — ${SHARE}% самых дорогих (${n.dear} шт., от ${eur(per[per.length - k])})`;
+  document.getElementById('empty').hidden = on.length > 0;
+}
+picker?.addEventListener('click', e => { const b = e.target.closest('button'); if (b) location.hash = b.dataset.day; });
+addEventListener('hashchange', show);
+show();
+</script></body></html>
